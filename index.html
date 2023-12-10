@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@300;700;900&family=Quicksand:wght@300;500;700&display=swap");
+    </style>
+    <style>
+      * {
+        font-family: "Indie Flower", cursive;
+        font-size: 25px;
+      }
+      body {
+        background-image: url(https://img.freepik.com/vector-gratis/fondo-escritorio-flores-vector-lindo_53876-136877.jpg);
+        height: 1400px;
+        display: grid;
+        place-items: center;
+      }
+      .title {
+        height: 35px;
+        width: 300px;
+        background-color: rgb(221, 180, 121);
+        text-align: center;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 1px 5px 5px 1px gray;
+      }
+      table {
+        border-collapse: collapse;
+        border-color: rgb(189, 189, 189);
+        background-color: #fcfcfcb1;
+        border-radius: 9px;
+      }
+      .contenido img {
+        height: 200px;
+        width: 200px;
+        padding: 15px;
+        border-radius: 20px;
+      }
+      .contenido {
+        text-align: center;
+        /* text-shadow: 1px 1px; */
+      }
+
+      .contenido .nombre {
+        width: 300px;
+      }
+      .contenido input {
+        width: 50px;
+      }
+      .contenido .cantidad {
+        width: 100px;
+      }
+      .contenido .precio {
+        width: 200px;
+      }
+      .contenido .total {
+        width: 400px;
+      }
+      .box-total {
+        background-color: rgba(217, 217, 217, 0.783);
+        height: 40px;
+        width: 1214px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 0.2px solid rgba(147, 147, 147, 0.497);
+      }
+      .box-total .totalp {
+        padding-left: 800px;
+      }
+      .contenido .descuento {
+        font-size: 20px;
+        height: 30px;
+        color: gray;
+      }
+      .contenido .precio-des {
+        text-decoration: line-through;
+        color: rgb(170, 57, 57);
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #precio-des1 {
+        text-decoration: underline;
+      }
+      #precio-des2 {
+        text-decoration: underline;
+      }
+      #precio-des3 {
+        text-decoration: underline;
+      }
+      #precio-des4 {
+        text-decoration: underline;
+      }
+      #precio-des5 {
+        text-decoration: underline;
+      }
+      footer {
+        margin: 30px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Carrito de compras 🛒</h1>
+    <table border="1px" class="contenido">
+      <thead></thead>
+      <tbody>
+        <tr>
+          <th>Imagen</th>
+          <th class="nombre">Nombre producto</th>
+          <th class="cantidad">Cantidad</th>
+          <th class="precio">Precio unitario</th>
+          <th class="total">Total</th>
+        </tr>
+
+        <tr>
+          <td><img src="/image/venti.jpeg" alt="" /></td>
+          <td>Venti cosplay</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="box-cantidad1"
+              onblur="calculateIVA1()"
+            />
+          </td>
+          <td>
+            <div class="precio-des" id="precioBase1" onclick="calculateDes1()">
+              350000
+            </div>
+            <div class="descuento">20% descuento</div>
+            <div id="precio-des1"></div>
+          </td>
+          <td>
+            Subtotal:
+            <div id="subtotal1"></div>
+            <hr />
+            Impuestos:
+            <div id="impuestos1"></div>
+            <hr />
+            Total:
+            <div id="total1"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="/image/kafka.jpeg" alt="" />
+          </td>
+          <td>Kafka cosplay</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="box-cantidad2"
+              onblur="calculateIVA2()"
+            />
+          </td>
+          <td>
+            <div class="precio-des" id="precioBase2" onclick="calculateDes2()">
+              400000
+            </div>
+            <div class="descuento">10% descuento</div>
+            <div id="precio-des2"></div>
+          </td>
+          <td>
+            Subtotal:
+            <div id="subtotal2"></div>
+            <hr />
+            Impuestos:
+            <div id="impuestos2"></div>
+            <hr />
+            Total:
+            <div id="total2"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="/image/madoka.jpeg" alt="" />
+          </td>
+          <td>Madoka cosplay</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="box-cantidad3"
+              onblur="calculateIVA3()"
+            />
+          </td>
+          <td>
+            <div class="precio-des" id="precioBase3" onclick="calculateDes3()">
+              350000
+            </div>
+            <div class="descuento">20% descuento</div>
+            <div id="precio-des3"></div>
+          </td>
+          <td>
+            Subtotal:
+            <div id="subtotal3"></div>
+            <hr />
+            Impuestos:
+            <div id="impuestos3"></div>
+            <hr />
+            Total:
+            <div id="total3"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="/image/mona.jpeg" alt="" />
+          </td>
+          <td>Mona cosplay</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="box-cantidad4"
+              onblur="calculateIVA4()"
+            />
+          </td>
+          <td>
+            <div class="precio-des" id="precioBase4" onclick="calculateDes4()">
+              500000
+            </div>
+            <div class="descuento">10% descuento</div>
+            <div id="precio-des4"></div>
+          </td>
+          <td>
+            Subtotal:
+            <div id="subtotal4"></div>
+            <hr />
+            Impuestos:
+            <div id="impuestos4"></div>
+            <hr />
+            Total:
+            <div id="total4"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="/image/Nilou.jpeg" alt="" />
+          </td>
+          <td>Nilou cosplay</td>
+          <td>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              id="box-cantidad5"
+              onblur="calculateIVA5()"
+            />
+          </td>
+          <td>
+            <div class="precio-des" id="precioBase5" onclick="calculateDes5()">
+              700000
+            </div>
+            <div class="descuento">25% descuento</div>
+            <div id="precio-des5"></div>
+          </td>
+          <td>
+            Subtotal:
+            <div id="subtotal5"></div>
+            <hr />
+            Impuestos:
+            <div id="impuestos5"></div>
+            <hr />
+            Total:
+            <div id="total5"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="box-total">
+      <p>Total a pagar:</p>
+      <p class="totalp">000000</p>
+      <button onclick="sumaTotal()">Pagar</button>
+    </div>
+    <footer>Gracias por comprar</footer>
+
+    <script>
+      function calculateDes1() {
+        let base = document.getElementById("precioBase1").innerText;
+
+        var preciodescontado1 = base - base * 0.2;
+        document.getElementById("precio-des1").innerText =
+          "$" + preciodescontado1;
+      }
+      function calculateDes2() {
+        let base = document.getElementById("precioBase2").innerText;
+
+        var preciodescontado2 = base - base * 0.1;
+        document.getElementById("precio-des2").innerText =
+          "$" + preciodescontado2;
+      }
+      function calculateDes3() {
+        let base = document.getElementById("precioBase3").innerText;
+
+        var preciodescontado3 = base - base * 0.2;
+        document.getElementById("precio-des3").innerText =
+          "$" + preciodescontado3;
+      }
+      function calculateDes4() {
+        let base = document.getElementById("precioBase4").innerText;
+
+        var preciodescontado4 = base - base * 0.1;
+        document.getElementById("precio-des4").innerText =
+          "$" + preciodescontado4;
+      }
+      function calculateDes5() {
+        let base = document.getElementById("precioBase5").innerText;
+
+        var preciodescontado5 = base - base * 0.25;
+        document.getElementById("precio-des5").innerText =
+          "$" + preciodescontado5;
+      }
+      function calculateIVA1() {
+        let base = document.getElementById("precioBase1").innerText;
+
+        var preciodescontado1 = base - base * 0.2;
+        let cantidad = document.getElementById("box-cantidad1").value;
+        let preciototal = cantidad * preciodescontado1;
+
+        let IVA = preciototal * 0.19;
+        let total = IVA + preciototal;
+
+        document.getElementById("subtotal1").innerText = "$" + preciototal;
+        document.getElementById("impuestos1").innerText = "$" + IVA;
+        document.getElementById("total1").innerText = "$" + total;
+      }
+      function calculateIVA2() {
+        let base = document.getElementById("precioBase2").innerText;
+
+        var preciodescontado2 = base - base * 0.1;
+        let cantidad = document.getElementById("box-cantidad2").value;
+        let preciototal = cantidad * preciodescontado2;
+
+        let IVA = preciototal * 0.19;
+        let total = IVA + preciototal;
+
+        document.getElementById("subtotal2").innerText = "$" + preciototal;
+        document.getElementById("impuestos2").innerText = "$" + IVA;
+        document.getElementById("total2").innerText = "$" + total;
+      }
+      function calculateIVA3() {
+        let base = document.getElementById("precioBase3").innerText;
+
+        var preciodescontado3 = base - base * 0.2;
+        let cantidad = document.getElementById("box-cantidad3").value;
+        let preciototal = cantidad * preciodescontado3;
+
+        let IVA = preciototal * 0.194;
+        let total = IVA + preciototal;
+
+        document.getElementById("subtotal3").innerText = "$" + preciototal;
+        document.getElementById("impuestos3").innerText = "$" + IVA;
+        document.getElementById("total3").innerText = "$" + total;
+      }
+      function calculateIVA4() {
+        let base = document.getElementById("precioBase4").innerText;
+
+        var preciodescontado4 = base - base * 0.1;
+        let cantidad = document.getElementById("box-cantidad4").value;
+        let preciototal = cantidad * preciodescontado4;
+
+        let IVA = preciototal * 0.19;
+        let total = IVA + preciototal;
+
+        document.getElementById("subtotal4").innerText = "$" + preciototal;
+        document.getElementById("impuestos4").innerText = "$" + IVA;
+        document.getElementById("total4").innerText = "$" + total;
+      }
+      function calculateIVA5() {
+        let base = document.getElementById("precioBase5").innerText;
+
+        var preciodescontado5 = base - base * 0.25;
+        let cantidad = document.getElementById("box-cantidad5").value;
+        let preciototal = cantidad * preciodescontado5;
+
+        let IVA = preciototal * 0.19;
+        let total = IVA + preciototal;
+
+        document.getElementById("subtotal5").innerText = "$" + preciototal;
+        document.getElementById("impuestos5").innerText = "$" + IVA;
+        document.getElementById("total5").innerText = "$" + total;
+      }
+    </script>
+  </body>
+</html>
